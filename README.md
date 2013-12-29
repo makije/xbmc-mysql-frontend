@@ -12,4 +12,7 @@ Installation notes
 
 8. composer install
 
-9. Have fun
+9. php artisan migrate
+10. php artisan db:seed
+
+11. Have fun
