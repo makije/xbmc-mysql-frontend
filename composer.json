@@ -18,6 +18,7 @@
 	},
 	"scripts": {
 		"post-install-cmd": [
+			"php artisan key:generate",
 			"php artisan optimize"
 		],
 		"post-update-cmd": [
