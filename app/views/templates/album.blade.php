@@ -14,7 +14,7 @@
 		<td>Songs</td>
 		<td>
 			@foreach($album->songs()->get() as $song)
-				{{$song->strTitle}}</br>
+				{{$song->iTrack}}. {{$song->strTitle}}</br>
 			@endforeach
 		</td>
 	</tr>
