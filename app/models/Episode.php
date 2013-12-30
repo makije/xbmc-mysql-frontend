@@ -2,7 +2,7 @@
 
 class Episode extends Eloquent {
 
-	protected $connection = 'xbmc';
+	protected $connection = 'video';
 	protected $table = 'episode';
 	protected $primaryKey = 'idEpisode';
 

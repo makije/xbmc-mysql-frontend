@@ -64,10 +64,21 @@ return array(
 			'prefix'    => '',
 		),
 
-		'xbmc' => array(
+		'video' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'MyVideos75',
+			'username'  => 'xbmc',
+			'password'  => 'xbmc',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
+
+		'music' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'MyMusic32',
 			'username'  => 'xbmc',
 			'password'  => 'xbmc',
 			'charset'   => 'utf8',

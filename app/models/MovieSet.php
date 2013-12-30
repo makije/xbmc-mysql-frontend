@@ -2,7 +2,7 @@
 
 class MovieSet extends Eloquent {
 
-	protected $connection = 'xbmc';
+	protected $connection = 'video';
 	protected $table = 'sets';
 	protected $primaryKey = 'idSet';
 

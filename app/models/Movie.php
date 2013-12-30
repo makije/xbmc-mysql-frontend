@@ -2,7 +2,7 @@
 
 class Movie extends Eloquent {
 
-	protected $connection = 'xbmc';
+	protected $connection = 'video';
 	protected $table = 'movie';
 	protected $primaryKey = 'idMovie';
 
