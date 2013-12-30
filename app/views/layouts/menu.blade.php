@@ -48,7 +48,14 @@
 							<li><a href="{{URL::to('episode/latest')}}">Latest</a></li>
 							<li><a href="{{URL::to('tvshow')}}">List</a></li>
 							<li><a href="{{URL::to('tvshow/search')}}">Search</a></li>
-						<ul>
+						</ul>
+					</li>
+					<li class="has-dropdown">
+						<a href="{{URL::to('artist')}}">Music</a>
+						<ul class="dropdown">
+							<li><a href="{{URL::to('artist')}}">Artists</a></li>
+							<li><a href="{{URL::to('album')}}">Albums</a></li>
+						</ul>
 					</li>
 				</ul>
 			@endif

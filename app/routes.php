@@ -122,6 +122,9 @@ Route::get('episode/{id}/download', array('before' => 'auth', function($id)
 	return Response::download($episode->getDownloadPath());
 }));
 
+Route::resource('artist', 'ArtistController');
+Route::resource('album', 'AlbumController');
+
 if (Config::get('database.log', false))
 {
 	Event::listen('illuminate.query', function($query, $bindings, $time, $name)
