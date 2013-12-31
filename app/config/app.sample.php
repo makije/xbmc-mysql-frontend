@@ -5,6 +5,7 @@ return array(
 	'name' => 'XBMC MySQL Frontend',
 	'srcPath' => array('path_to_replace'),
 	'dstPath' => array('path_to_replace_with'),
+	'maxImages' => '3',
 
 	/*
 	|--------------------------------------------------------------------------

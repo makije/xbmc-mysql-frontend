@@ -12,7 +12,7 @@
 				<?php
 					$number++;
 
-					if($number >= 10)
+					if($number >= Config::get('app.maxImages'))
 						break;
 				?>
 
