@@ -34,4 +34,22 @@ class TVShow extends Eloquent {
 		return $this->hasMany('Episode', 'idShow', 'idShow');
 	}
 
+	public function getTTVDBID()
+	{
+
+		if(strlen($this->c10) == 0)
+			return null;
+
+		$dom = new DOMDocument();
+		@$dom->loadHTML($this->c10);
+
+		$id = null;
+
+		foreach($dom->getElementsByTagName('url') as $url)
+		{
+			$id = str_replace('.xml', '', $url->getAttribute('cache'));
+		}
+
+		return $id;
+	}
 }

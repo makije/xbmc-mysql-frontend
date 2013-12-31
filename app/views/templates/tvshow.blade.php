@@ -24,7 +24,7 @@
 <table>
 	<tr>
 		<td>Name</td>
-		<td>{{ $show->getName() }}</td>
+		<td><a href="http://thetvdb.com/?tab=series&id={{$show->getTTVDBID()}}" target="_blank">{{ $show->getName() }}</a></td>
 	</tr>
 	<tr>
 		<td>Plot</td>
