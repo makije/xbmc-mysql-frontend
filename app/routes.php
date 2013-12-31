@@ -125,6 +125,9 @@ Route::get('episode/{id}/download', array('before' => 'auth', function($id)
 Route::resource('artist', 'ArtistController');
 Route::resource('album', 'AlbumController');
 
+Route::get('wish/granted', 'WishController@granted');
+Route::resource('wish', 'WishController');
+
 if (Config::get('database.log', false))
 {
 	Event::listen('illuminate.query', function($query, $bindings, $time, $name)

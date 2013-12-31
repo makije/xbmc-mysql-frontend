@@ -57,6 +57,14 @@
 							<li><a href="{{URL::to('album')}}">Albums</a></li>
 						</ul>
 					</li>
+					<li class="has-dropdown">
+						<a href="{{URL::to('wish')}}">Wishes</a>
+						<ul class="dropdown">
+							<li><a href="{{URL::to('wish/granted')}}">Granted wishes</a></li>
+							<li><a href="{{URL::to('wish/create')}}">Make a wish</a></li>
+							<li><a href="{{URL::to('wish')}}">Wishes</a></li>
+						</ul>
+					</li>
 				</ul>
 			@endif
 		</section>
