@@ -6,7 +6,7 @@
 	<ul class="example-orbit" data-orbit data-options="timer_speed: 3000; pause_on_hover: false;">
 		@foreach($show->getBanners() as $banner)
 			<li>
-				<img src="{{$banner}}" alt="slide 1" />
+				<img src="{{$banner}}"/>
 			</li>
 
 			<?php

@@ -6,7 +6,7 @@
 		<ul class="example-orbit" data-orbit data-options="timer_speed: 3000; pause_on_hover: false;">
 			@foreach($movie->getPosters() as $poster)
 				<li>
-					<img src="{{$poster}}" alt="slide 1" />
+					<img src="{{$poster}}"/>
 				</li>
 
 				<?php
