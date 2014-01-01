@@ -1,6 +1,6 @@
 <?php
 
-class MovieController extends \BaseController {
+class ActorController extends \BaseController {
 
 	public function __construct()
 	{
@@ -14,8 +14,8 @@ class MovieController extends \BaseController {
 	 */
 	public function index()
 	{
-		$movies = Movie::where('idMovie', '>', 0 )->orderBy('c16', 'asc')->paginate(15);
-		return View::make('movie-listing')->with('movies', $movies);
+		$actors = Actor::where('idActor', '>', 0 )->orderBy('strActor', 'asc')->paginate(15);
+		return View::make('actor-listing')->with('actors', $actors);
 	}
 
 	/**
@@ -46,9 +46,9 @@ class MovieController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$movie = Movie::find($id);
-		$movie->load('actors', 'streamDetails');
-		return View::make('movie')->with('movie', $movie);
+		$actor = Actor::find($id);
+		$actor->load('movies', 'tvshows');
+		return View::make('actor')->with('actor', $actor);
 	}
 
 	/**
@@ -82,12 +82,6 @@ class MovieController extends \BaseController {
 	public function destroy($id)
 	{
 		//
-	}
-
-	public function download($id)
-	{
-		$movie = Movie::find($id);
-		return Response::download($movie->getDownloadPath());
 	}
 
 }

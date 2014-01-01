@@ -36,9 +36,18 @@ class Movie extends Eloquent {
 			return $this->c16 . ' (' . $this->c07 . ')<br/>(' . $this->c00 . ')';
 	}
 
+	public function streamDetails()
+	{
+		return $this->beLongsTo('StreamDetail', 'idFile', 'idFile')->orderBy('iStreamType');
+	}
+
 	public function set()
 	{
 		return $this->belongsTo('MovieSet', 'idSet', 'idSet');
 	}
 
+	public function actors()
+	{
+		return $this->belongsToMany('Actor', 'actorlinkmovie', 'idMovie', 'idActor')->withPivot('strRole', 'iOrder')->orderBy('pivot_iOrder');
+	}
 }

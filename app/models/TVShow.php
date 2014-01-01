@@ -52,4 +52,10 @@ class TVShow extends Eloquent {
 
 		return $id;
 	}
+
+	public function actors()
+	{
+		return $this->belongsToMany('Actor', 'actorlinktvshow', 'idShow', 'idActor')->withPivot('strRole', 'iOrder')->orderBy('pivot_iOrder');
+	}
+
 }

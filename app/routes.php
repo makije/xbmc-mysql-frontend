@@ -128,6 +128,8 @@ Route::resource('album', 'AlbumController');
 Route::get('wish/granted', 'WishController@granted');
 Route::resource('wish', 'WishController');
 
+Route::resource('actor', 'ActorController');
+
 if (Config::get('database.log', false))
 {
 	Event::listen('illuminate.query', function($query, $bindings, $time, $name)

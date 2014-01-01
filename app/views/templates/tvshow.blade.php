@@ -39,6 +39,18 @@
 		<td>{{ $show->c08 }}</td>
 	</tr>
 	<tr>
+		<td>Actors</td>
+		<td>
+			@foreach($show->actors()->get() as $actor)
+				<a href="/actor/{{$actor->idActor}}">{{$actor->strActor}}</a>
+				@if($actor->pivot->strRole)
+					as {{$actor->pivot->strRole}}
+				@endif
+				<br/>
+			@endforeach
+		</td>
+	</tr>
+	<tr>
 		<td>Episodes</td>
 		<td>
 			<?php

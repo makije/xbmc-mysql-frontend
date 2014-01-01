@@ -33,6 +33,20 @@
 		<td>Country</td>
 		<td>{{ $movie->c21 }}</td>
 	</tr>
+	@if($movie->actors()->get()->count() > 0)
+		<tr>
+			<td>Actors</td>
+			<td>
+				@foreach($movie->actors as $actor)
+					<a href="/actor/{{$actor->idActor}}">{{$actor->strActor}}</a>
+					@if($actor->pivot->strRole)
+						as {{$actor->pivot->strRole}}
+					@endif
+					<br/>
+				@endforeach
+			</td>
+		</tr>
+	@endif
 	<?php
 		$set = $movie->set()->first();
 	?>
@@ -41,6 +55,24 @@
 			<td>Part of</td>
 			<td><a href="/movieset/{{$set->idSet}}">{{$set->getName()}}</a></td>
 		</tr>
+	@endif
+	@if($movie->streamDetails()->get()->count() > 0)
+		<tr>
+			<td>Stream Details</td>
+			<td>
+				@foreach($movie->streamDetails()->get() as $streamDetail)
+					@if($streamDetail->iStreamType == 0)
+						Video: {{$streamDetail->strVideoCodec}} {{$streamDetail->iVideoWidth}}x{{$streamDetail->iVideoHeight}} {{round($streamDetail->iVideoDuration / 60)}}min<br/>
+					@endif
+					@if($streamDetail->iStreamType == 1)
+						Audio: {{$streamDetail->strAudioCodec}} {{$streamDetail->iAudioChannels}} {{$streamDetail->strAudioLanguage}}<br/>
+					@endif
+					@if($streamDetail->iStreamType == 2)
+						Subtitle: {{$streamDetail->strSubtitleLanguage}}<br/>
+					@endif
+				@endforeach
+			</td>
+		<tr>
 	@endif
 	<tr>
 		<td>Download</td>
