@@ -69,7 +69,8 @@ class WishController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$wish = Wish::find($id);
+		return View::make('add-wish', array('wish' => $wish, 'grant' => true));
 	}
 
 	/**
@@ -80,7 +81,22 @@ class WishController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$wish = Wish::find($id);
+		$title = Input::get('title');
+		$type = Input::get('type');
+		$url = Input::get('url');
+		$granturl = Input::get('granturl');
+
+		$wish->title = $title;
+		$wish->type = $type;
+		$wish->url = $url;
+		if(strlen($granturl) > 0)
+			$wish->granted_url = $granturl;
+		else
+			$wish->granted_url = null;
+		$wish->save();
+
+		return Redirect::to('/wish/' . $wish->id);
 	}
 
 	/**
