@@ -16,3 +16,8 @@ Installation notes
 10. php artisan db:seed
 
 11. Have fun
+
+
+The default login details
+Username: admin
+Password: admin
