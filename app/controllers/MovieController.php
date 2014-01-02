@@ -86,8 +86,15 @@ class MovieController extends \BaseController {
 
 	public function download($id)
 	{
-		$movie = Movie::find($id);
-		return Response::download($movie->getDownloadPath());
+		if(Config::get('app.downloads'))
+		{
+			$movie = Movie::find($id);
+			return Response::download($movie->getDownloadPath());
+		}
+		else
+		{
+			App::abort(404);
+		}
 	}
 
 }

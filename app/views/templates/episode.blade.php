@@ -11,7 +11,17 @@
 		<td>{{ $episode->c01 }}</td>
 	</tr>
 	<tr>
-		<td>Download</td>
-		<td><a href="/episode/{{$episode->idEpisode}}/download">{{ $episode->getDownloadPath() }}</a></td>
+		<td>Path</td>
+		<td>
+			@if(Config::get('app.downloads'))
+				<a href="/episode/{{$episode->idEpisode}}/download">
+			@endif
+
+			{{ $episode->getDownloadPath() }}
+
+			@if(Config::get('app.downloads'))
+				</a>
+			@endif
+		</td>
 	</tr>
 </table>

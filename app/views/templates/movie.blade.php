@@ -72,10 +72,20 @@
 					@endif
 				@endforeach
 			</td>
-		<tr>
+		</tr>
 	@endif
 	<tr>
-		<td>Download</td>
-		<td><a href="/movie/{{$movie->idMovie}}/download">{{ $movie->getDownloadPath() }}</a></td>
+		<td>Path</td>
+		<td>
+			@if(Config::get('app.downloads'))
+				<a href="/movie/{{$movie->idMovie}}/download">
+			@endif
+
+			{{ $movie->getDownloadPath() }}
+
+			@if(Config::get('app.downloads'))
+				</a>
+			@endif
+		</td>
 	</tr>
 </table>

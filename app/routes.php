@@ -142,8 +142,15 @@ Route::get('episode/{id}', array('before' => 'auth', function($id)
 
 Route::get('episode/{id}/download', array('before' => 'auth', function($id)
 {
-	$episode = Episode::find($id);
-	return Response::download($episode->getDownloadPath());
+	if(Config::get('app.downloads'))
+	{
+		$episode = Episode::find($id);
+		return Response::download($episode->getDownloadPath());
+	}
+	else
+	{
+		App:abort(404);
+	}
 }));
 
 Route::resource('artist', 'ArtistController');

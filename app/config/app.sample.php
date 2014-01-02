@@ -6,6 +6,7 @@ return array(
 	'srcPath' => array('path_to_replace'),
 	'dstPath' => array('path_to_replace_with'),
 	'maxImages' => '3',
+	'downloads' => false,
 
 	/*
 	|--------------------------------------------------------------------------
