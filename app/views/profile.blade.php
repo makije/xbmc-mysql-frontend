@@ -2,19 +2,19 @@
 
 @section('content')
 
-	@if(Session::has('password_error'))
+	@if(Session::get('error')  && strlen(Session::get('message')) > 0)
 		<center>
 			<div data-alert class="alert-box alert large-6 small-12">
-				<span>Error</span>
+				<span>{{Session::get('message');}}</span>
 				<a href="#" class="close">&times;</a>
 			</div>
 		</center>
         @endif
 
-	@if(Session::has('changed'))
+	@if(!Session::get('error') && strlen(Session::get('message')) > 0)
 		<center>
 			<div data-alert class="alert-box success large-6 small-12">
-				<span>Password changed</span>
+				<span>{{Session::get('message')}}</span>
 				<a href="#" class="close">&times;</a>
 			</div>
 		</center>
@@ -47,6 +47,15 @@
                                         </div>
                                         <div class="small-7 large-9 columns">
                                                 {{ Form::password('confirm', array('placeholder' => 'Please confirm your new password')) }}
+                                        </div>
+                                </div>
+
+                                <div class="row collapse">
+                                        <div class="small-5 large-3 columns">
+                                                <span class="prefix">Items per page</span>
+                                        </div>
+                                        <div class="small-7 large-9 columns">
+                                                {{ Form::selectRange('items_per_page', 10, 50, $user->items_per_page) }}
                                         </div>
                                 </div>
 

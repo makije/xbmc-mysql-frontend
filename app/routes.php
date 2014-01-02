@@ -50,17 +50,41 @@ Route::get('logout', array('before' => 'auth', function() {
 
 Route::get('profile', array('before' => 'auth', function()
 {
-	return View::make('profile');
+	return View::make('profile')->with('user', Auth::user());
 }));
 
 Route::post('profile', array('before' => 'auth', function()
 {
+	$message = '';
+	$error = false;
+
+	if(Auth::user()->items_per_page != Input::get('items_per_page'))
+	{
+		Auth::user()->items_per_page = Input::get('items_per_page');
+		Auth::user()->save();
+		$message .= 'Items per page updated<br/>';
+	}
+
 	if(Hash::check(Input::get('password'), Auth::user()->password) && strlen(Input::get('new-password')) > 0 && Input::get('new-password') == Input::get('confirm')) {
 		Auth::user()->password = Hash::make(Input::get('new-password'));
 		Auth::user()->save();
-		return Redirect::to('profile')->with('changed', true);
-	} else
-		return Redirect::to('profile')->with('password_error', true);
+		$message .= 'Password updated<br/>';
+	}
+
+	if(!Hash::check(Input::get('password'), Auth::user()->password) && strlen(Input::get('password')) > 0)
+	{
+		$error = true;
+		$message .= 'Password incorrect<br/>';
+	}
+
+	if(Input::get('new-password') != Input::get('confirm'))
+	{
+		$error = true;
+		$message .= 'Password does not match<br/>';
+	}
+
+	return Redirect::to('profile')->with(array('message' => $message, 'error' => $error));
+
 }));
 
 Route::get('/', array('before' => 'auth', function()
