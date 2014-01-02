@@ -14,7 +14,7 @@ class ArtistController extends \BaseController {
 	 */
 	public function index()
 	{
-		$artists = Artist::where('idArtist', '>', 0 )->orderBy('strArtist')->paginate(15);
+		$artists = Artist::where('idArtist', '>', 0 )->orderBy('strArtist')->paginate(Auth::user()->items_per_page);
 		return View::make('artist-listing')->with('artists', $artists);
 	}
 

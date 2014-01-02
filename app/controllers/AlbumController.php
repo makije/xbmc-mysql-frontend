@@ -14,7 +14,7 @@ class AlbumController extends \BaseController {
 	 */
 	public function index()
 	{
-		$albums = Album::where('idAlbum', '>', 0 )->orderBy('strAlbum')->paginate(15);
+		$albums = Album::where('idAlbum', '>', 0 )->orderBy('strAlbum')->paginate(Auth::user()->items_per_page);
 		return View::make('album-listing')->with('albums', $albums);
 	}
 

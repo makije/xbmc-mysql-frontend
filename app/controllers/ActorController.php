@@ -14,7 +14,7 @@ class ActorController extends \BaseController {
 	 */
 	public function index()
 	{
-		$actors = Actor::where('idActor', '>', 0 )->orderBy('strActor', 'asc')->paginate(15);
+		$actors = Actor::where('idActor', '>', 0 )->orderBy('strActor', 'asc')->paginate(Auth::user()->items_per_page);
 		return View::make('actor-listing')->with('actors', $actors);
 	}
 

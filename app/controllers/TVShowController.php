@@ -14,7 +14,7 @@ class TVShowController extends \BaseController {
 	 */
 	public function index()
 	{
-		$shows = TVShow::where('idShow', '>', 'idSet')->orderBy('c00')->paginate(15);
+		$shows = TVShow::where('idShow', '>', 'idSet')->orderBy('c00')->paginate(Auth::user()->items_per_page);
 		return View::make('tvshow-listing')->with('shows', $shows);
 	}
 

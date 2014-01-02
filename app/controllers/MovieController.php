@@ -14,7 +14,7 @@ class MovieController extends \BaseController {
 	 */
 	public function index()
 	{
-		$movies = Movie::where('idMovie', '>', 0 )->orderBy('c16', 'asc')->paginate(15);
+		$movies = Movie::where('idMovie', '>', 0 )->orderBy('c16', 'asc')->paginate(Auth::user()->items_per_page);
 		return View::make('movie-listing')->with('movies', $movies);
 	}
 

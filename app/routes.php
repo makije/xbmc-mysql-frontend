@@ -70,7 +70,7 @@ Route::get('/', array('before' => 'auth', function()
 
 Route::get('movie/latest', array('before' => 'auth', function()
 {
-	$movies = Movie::where('idMovie', '>', 0)->orderBy('idMovie', 'desc')->take(15)->get();
+	$movies = Movie::where('idMovie', '>', 0)->orderBy('idMovie', 'desc')->take(Auth::user()->items_per_page)->get();
 	return View::make('movie-latest')->with('movies', $movies);
 }));
 
@@ -106,7 +106,7 @@ Route::resource('tvshow', 'TVShowController');
 
 Route::get('episode/latest', array('before' => 'auth', function()
 {
-	$episodes = Episode::with('tvshow')->orderBy('idEpisode', 'desc')->take(15)->get();
+	$episodes = Episode::with('tvshow')->orderBy('idEpisode', 'desc')->take(Auth::user()->items_per_page)->get();
 	return View::make('episode-latest')->with('episodes', $episodes);
 }));
 

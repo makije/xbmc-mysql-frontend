@@ -14,7 +14,7 @@ class MovieSetController extends \BaseController {
 	 */
 	public function index()
 	{
-		$movieSets = MovieSet::with('movies')->orderBy('strSet', 'asc')->paginate(15);
+		$movieSets = MovieSet::with('movies')->orderBy('strSet', 'asc')->paginate(Auth::user()->items_per_page);
 		return View::make('movieset-listing')->with('movieSets', $movieSets);
 	}
 

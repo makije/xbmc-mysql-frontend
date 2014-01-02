@@ -7,11 +7,11 @@
 @if($actor->movies()->get()->count() > 0)
 	<h2>Movies</h2>
 
-	@include('templates.movie-list', array('movies' => $actor->movies()->paginate(15), 'paginate' => true))
+	@include('templates.movie-list', array('movies' => $actor->movies()->paginate(Auth::user()->items_per_page), 'paginate' => true))
 @endif
 
 @if($actor->tvshows()->get()->count() > 0)
 	<h2>TV Shows</h2>
 
-	@include('templates.tvshow-list', array('shows' => $actor->tvshows()->paginate(15), 'paginate' => true))
+	@include('templates.tvshow-list', array('shows' => $actor->tvshows()->paginate(Auth::user()->items_per_page), 'paginate' => true))
 @endif
