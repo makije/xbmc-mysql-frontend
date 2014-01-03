@@ -6,4 +6,9 @@ class Song extends Eloquent {
 	protected $table = 'song';
 	protected $primaryKey = 'idSong';
 
+	public function path()
+	{
+		return $this->hasOne('Path', 'idPath', 'idPath');
+	}
+
 }

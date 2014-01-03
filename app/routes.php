@@ -179,6 +179,25 @@ Route::get('music/search', array('before' => 'auth', function()
 Route::resource('artist', 'ArtistController');
 Route::resource('album', 'AlbumController');
 
+Route::get('song/{id}', array('before' => 'auth', function($id)
+{
+	$song = Song::find($id);
+	return View::make('song')->with('song', $song);
+}));
+
+Route::get('song/{id}/download', array('before' => 'auth', function($id)
+{
+	if(Config::get('app.downloads'))
+	{
+		$song = Song::find($id);
+		return Response::download($song->path->getPath() . $song->strFileName);
+	}
+	else
+	{
+		App::abort(404);
+	}
+}));
+
 Route::get('wish/granted', 'WishController@granted');
 Route::resource('wish', 'WishController');
 

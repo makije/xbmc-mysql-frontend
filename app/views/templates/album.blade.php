@@ -14,7 +14,7 @@
 		<td>Songs</td>
 		<td>
 			@foreach($album->songs()->get() as $song)
-				{{$song->iTrack}}. {{$song->strTitle}}</br>
+				<a href="/song/{{$song->idSong}}">{{$song->iTrack}}. {{$song->strTitle}}</a></br>
 			@endforeach
 		</td>
 	</tr>
