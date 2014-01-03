@@ -67,7 +67,7 @@
 	@endif
 	<tr>
 		<td>Rating</td>
-		<td>{{round($movie->c05, 1)}} (Votes {{$movie->c04}})</td>
+		<td>{{round($movie->c05, 1)}} ({{$movie->c04}} votes)</td>
 	</tr>
 	<?php
 		$set = $movie->set()->first();

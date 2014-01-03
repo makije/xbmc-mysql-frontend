@@ -31,6 +31,10 @@
 		<td>{{ $show->c01 }}</td>
 	</tr>
 	<tr>
+		<td>Rating</td>
+		<td>{{round($show->c04, 1)}}</td>
+	</tr>
+	<tr>
 		<td>Network</td>
 		<td>{{ $show->c14 }}</td>
 	</tr>
