@@ -153,11 +153,44 @@ Route::get('episode/{id}/download', array('before' => 'auth', function($id)
 	}
 }));
 
+Route::get('music/search', array('before' => 'auth', function()
+{
+	if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('artist') && !Input::has('album')) {
+		$name = Input::get('name');
+		$artists = Artist::where('strArtist', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strArtist', 'asc')->get();
+		return View::make('music-search')->with('artists', $artists);
+	}
+	else if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('album') && !Input::has('artist')) {
+		$name = Input::get('name');
+		$albums = Album::where('strAlbum', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strAlbum', 'asc')->get();
+		return View::make('music-search')->with('albums', $albums);
+        }
+	else if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('artist') && Input::has('artist')) {
+		$name = Input::get('name');
+		$artists = Artist::where('strArtist', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strArtist', 'asc')->get();
+		$albums = Album::where('strAlbum', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strAlbum', 'asc')->get();
+		return View::make('music-search')->with(array('albums' => $albums, 'artists' => $artists));
+	}
+	else
+		return View::make('music-search');
+}));
+
 Route::resource('artist', 'ArtistController');
 Route::resource('album', 'AlbumController');
 
 Route::get('wish/granted', 'WishController@granted');
 Route::resource('wish', 'WishController');
+
+Route::get('actor/search', array('before' => 'auth', function()
+{
+	if(Input::has('actor') && strlen(Input::get('actor')) > 0) {
+		$actorName = Input::get('actor');
+		$actors = Actor::where('strActor', 'like', '%' . str_replace(' ', '%', $actorName) . '%')->orderBy('strActor', 'asc')->get();
+		return View::make('actor-search')->with('actors', $actors);
+	}
+	else
+		return View::make('actor-search');
+}));
 
 Route::resource('actor', 'ActorController');
 

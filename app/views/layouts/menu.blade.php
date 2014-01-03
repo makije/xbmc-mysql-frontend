@@ -37,6 +37,7 @@
                                                 <a href="{{URL::to('actor')}}">Actors</a>
                                                 <ul class="dropdown">
                                                         <li><a href="{{URL::to('actor')}}">List</a></li>
+                                                        <li><a href="{{URL::to('actor/search')}}">Search</a></li>
                                                 </ul>
                                         </li>
 					<li class="has-dropdown">
@@ -61,6 +62,7 @@
 						<ul class="dropdown">
 							<li><a href="{{URL::to('artist')}}">Artists</a></li>
 							<li><a href="{{URL::to('album')}}">Albums</a></li>
+							<li><a href="{{URL::to('music/search')}}">Search</a></li>
 						</ul>
 					</li>
 					<li class="has-dropdown">
