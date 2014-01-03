@@ -156,24 +156,29 @@ Route::get('episode/{id}/download', array('before' => 'auth', function($id)
 
 Route::get('music/search', array('before' => 'auth', function()
 {
-	if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('artist') && !Input::has('album')) {
+	$artists = null;
+	$albums = null;
+	$songs = null;
+
+	if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('artist')) {
 		$name = Input::get('name');
 		$artists = Artist::where('strArtist', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strArtist', 'asc')->get();
-		return View::make('music-search')->with('artists', $artists);
+		//return View::make('music-search')->with('artists', $artists);
 	}
-	else if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('album') && !Input::has('artist')) {
+
+	if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('album')) {
 		$name = Input::get('name');
 		$albums = Album::where('strAlbum', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strAlbum', 'asc')->get();
-		return View::make('music-search')->with('albums', $albums);
+		//return View::make('music-search')->with('albums', $albums);
         }
-	else if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('artist') && Input::has('artist')) {
+
+	if(Input::has('name') && strlen(Input::get('name')) > 0 && Input::has('song')) {
 		$name = Input::get('name');
-		$artists = Artist::where('strArtist', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strArtist', 'asc')->get();
-		$albums = Album::where('strAlbum', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strAlbum', 'asc')->get();
-		return View::make('music-search')->with(array('albums' => $albums, 'artists' => $artists));
-	}
-	else
-		return View::make('music-search');
+		$songs = Song::where('strTitle', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strTitle', 'asc')->get();
+		//return View::make('music-search')->with('albums', $albums);
+        }
+
+	return View::make('music-search')->with(array('artists' => $artists, 'albums' => $albums, 'songs' => $songs));
 }));
 
 Route::resource('artist', 'ArtistController');

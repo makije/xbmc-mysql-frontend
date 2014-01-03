@@ -21,6 +21,7 @@
 					<div class="small-7 large-9 columns">
 						{{ Form::checkbox('artist', null, Input::has('artist')) }}<label for="artist">Artist</label>
 						{{ Form::checkbox('album', null, Input::has('album')) }}<label for="album">Album</label>
+						{{ Form::checkbox('song', null, Input::has('song')) }}<label for="song">Song</label>
 					</div>
 				</div>
 
@@ -47,6 +48,14 @@
 		<h1>Albums</h1>
 
 		@include('templates.album-list', array('albums' => $albums, 'paginate' => false))
+
+	@endif
+
+	@if(isset($songs))
+
+		<h1>Songs</h1>
+
+		@include('templates.song-list', array('songs' => $songs, 'paginate' => false))
 
 	@endif
 
