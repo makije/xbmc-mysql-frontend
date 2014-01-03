@@ -84,7 +84,7 @@
 			<td>
 				@foreach($movie->streamDetails()->get() as $streamDetail)
 					@if($streamDetail->iStreamType == 0)
-						Video: {{$streamDetail->strVideoCodec}} {{$streamDetail->iVideoWidth}}x{{$streamDetail->iVideoHeight}} {{round($streamDetail->iVideoDuration / 60)}}min<br/>
+						Video: {{$streamDetail->strVideoCodec}} {{$streamDetail->iVideoWidth}}x{{$streamDetail->iVideoHeight}} {{gmdate('H:i:s', $streamDetail->iVideoDuration)}}<br/>
 					@endif
 					@if($streamDetail->iStreamType == 1)
 						Audio: {{$streamDetail->strAudioCodec}} {{$streamDetail->iAudioChannels}} {{$streamDetail->strAudioLanguage}}<br/>
