@@ -42,7 +42,7 @@
 		<td>Actors</td>
 		<td>
 			@foreach($show->actors()->get() as $actor)
-				<a href="/actor/{{$actor->idActor}}">{{$actor->strActor}}</a>
+				<a href="/person/{{$actor->idActor}}">{{$actor->strActor}}</a>
 				@if($actor->pivot->strRole)
 					as {{$actor->pivot->strRole}}
 				@endif

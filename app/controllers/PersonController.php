@@ -1,6 +1,6 @@
 <?php
 
-class ActorController extends \BaseController {
+class PersonController extends \BaseController {
 
 	public function __construct()
 	{
@@ -14,8 +14,8 @@ class ActorController extends \BaseController {
 	 */
 	public function index()
 	{
-		$actors = Actor::where('idActor', '>', 0 )->orderBy('strActor', 'asc')->paginate(Auth::user()->items_per_page);
-		return View::make('actor-listing')->with('actors', $actors);
+		$persons = Person::where('idActor', '>', 0 )->orderBy('strActor', 'asc')->paginate(Auth::user()->items_per_page);
+		return View::make('person-listing')->with('persons', $persons);
 	}
 
 	/**
@@ -46,9 +46,9 @@ class ActorController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$actor = Actor::find($id);
-		$actor->load('movies', 'tvshows');
-		return View::make('actor')->with('actor', $actor);
+		$person = Person::find($id);
+		$person->load('moviesActed', 'tvshowsActed', 'moviesDirected', 'episodesDirected');
+		return View::make('person')->with('person', $person);
 	}
 
 	/**

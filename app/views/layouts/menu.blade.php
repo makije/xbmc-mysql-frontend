@@ -34,10 +34,10 @@
 			@if(Auth::check())
 				<ul class="left">
 					<li class="has-dropdown">
-                                                <a href="{{URL::to('actor')}}">Actors</a>
+                                                <a href="{{URL::to('person')}}">Persons</a>
                                                 <ul class="dropdown">
-                                                        <li><a href="{{URL::to('actor')}}">List</a></li>
-                                                        <li><a href="{{URL::to('actor/search')}}">Search</a></li>
+                                                        <li><a href="{{URL::to('person')}}">List</a></li>
+                                                        <li><a href="{{URL::to('person/search')}}">Search</a></li>
                                                 </ul>
                                         </li>
 					<li class="has-dropdown">

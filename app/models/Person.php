@@ -1,6 +1,6 @@
 <?php
 
-class Actor extends Eloquent {
+class Person extends Eloquent {
 
 	protected $connection = 'video';
 	protected $table = 'actors';
@@ -28,14 +28,23 @@ class Actor extends Eloquent {
 		return $this->strActor;
 	}
 
-	public function movies()
+	public function moviesActed()
 	{
 		return $this->belongsToMany('Movie', 'actorlinkmovie', 'idActor', 'idMovie')->orderBy('c16');
 	}
 
-	public function tvshows()
+	public function tvshowsActed()
 	{
 		return $this->belongsToMany('TVShow', 'actorlinktvshow', 'idActor', 'idShow')->orderBy('c00');
 	}
 
+	public function moviesDirected()
+	{
+		return $this->belongsToMany('Movie', 'directorlinkmovie', 'idDirector', 'idMovie')->orderBy('c16');
+	}
+
+	public function episodesDirected()
+	{
+		return $this->belongsToMany('Episode', 'directorlinkepisode', 'idDirector', 'idEpisode')->orderBy('c00');
+	}
 }

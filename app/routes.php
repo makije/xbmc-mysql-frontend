@@ -137,6 +137,7 @@ Route::get('episode/latest', array('before' => 'auth', function()
 Route::get('episode/{id}', array('before' => 'auth', function($id)
 {
 	$episode = Episode::find($id);
+	$episode->load('actors', 'directors', 'tvshow');
 	return View::make('episode')->with('episode', $episode);
 }));
 
@@ -181,18 +182,18 @@ Route::resource('album', 'AlbumController');
 Route::get('wish/granted', 'WishController@granted');
 Route::resource('wish', 'WishController');
 
-Route::get('actor/search', array('before' => 'auth', function()
+Route::get('person/search', array('before' => 'auth', function()
 {
-	if(Input::has('actor') && strlen(Input::get('actor')) > 0) {
-		$actorName = Input::get('actor');
-		$actors = Actor::where('strActor', 'like', '%' . str_replace(' ', '%', $actorName) . '%')->orderBy('strActor', 'asc')->get();
-		return View::make('actor-search')->with('actors', $actors);
+	if(Input::has('name') && strlen(Input::get('name')) > 0) {
+		$name = Input::get('name');
+		$persons = Person::where('strActor', 'like', '%' . str_replace(' ', '%', $name) . '%')->orderBy('strActor', 'asc')->get();
+		return View::make('person-search')->with('persons', $persons);
 	}
 	else
-		return View::make('actor-search');
+		return View::make('person-search');
 }));
 
-Route::resource('actor', 'ActorController');
+Route::resource('person', 'PersonController');
 
 if (Config::get('database.log', false))
 {

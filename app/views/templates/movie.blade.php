@@ -23,7 +23,14 @@
 <table>
 	<tr>
 		<td>Name</td>
-		<td><a href="http://www.imdb.com/title/{{$movie->c09}}" target="_blank">{{ $movie->getName() }}</a></td>
+		<td>
+			<a href="http://www.imdb.com/title/{{$movie->c09}}" target="_blank">{{ $movie->getName() }}</a><br/>
+			{{$movie->c12}}
+		</td>
+	</tr>
+	<tr>
+		<td>Genre(s)</td>
+		<td>{{$movie->c14}}</td>
 	</tr>
 	<tr>
 		<td>Plot</td>
@@ -38,7 +45,7 @@
 			<td>Actors</td>
 			<td>
 				@foreach($movie->actors as $actor)
-					<a href="/actor/{{$actor->idActor}}">{{$actor->strActor}}</a>
+					<a href="/person/{{$actor->idActor}}">{{$actor->strActor}}</a>
 					@if($actor->pivot->strRole)
 						as {{$actor->pivot->strRole}}
 					@endif
@@ -47,6 +54,21 @@
 			</td>
 		</tr>
 	@endif
+	@if($movie->directors()->count() > 0)
+		<tr>
+			<td>Director(s)</td>
+			<td>
+				@foreach($movie->directors as $director)
+					<a href="/person/{{$director->idActor}}">{{$director->getName()}}</a>
+					<br/>
+				@endforeach
+			</td>
+		</tr>
+	@endif
+	<tr>
+		<td>Rating</td>
+		<td>{{round($movie->c05, 1)}} (Votes {{$movie->c04}})</td>
+	</tr>
 	<?php
 		$set = $movie->set()->first();
 	?>

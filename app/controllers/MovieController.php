@@ -47,7 +47,7 @@ class MovieController extends \BaseController {
 	public function show($id)
 	{
 		$movie = Movie::find($id);
-		$movie->load('actors', 'streamDetails');
+		$movie->load('directors', 'actors', 'streamDetails');
 		return View::make('movie')->with('movie', $movie);
 	}
 

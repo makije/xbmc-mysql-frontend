@@ -2,15 +2,15 @@
 
 @section('content')
 
-	{{ Form::open(array('url' => 'actor/search', 'method' => 'get')) }}
+	{{ Form::open(array('url' => 'person/search', 'method' => 'get')) }}
                 <div class="row">
                         <div class="large-6 large-offset-3 small-12 columns">
                                 <div class="row collapse">
                                         <div class="small-5 large-3 columns">
-                                                <span class="prefix">Actor</span>
+                                                <span class="prefix">Person</span>
                                         </div>
                                         <div class="small-7 large-9 columns">
-                                                {{ Form::text('actor', Input::get('actor'), array('placeholder' => 'Enter actor name')) }}
+                                                {{ Form::text('name', Input::get('name'), array('placeholder' => 'Enter name')) }}
                                         </div>
                                 </div>
 
@@ -24,9 +24,9 @@
                 </div>
         {{ Form::close() }}
 
-	@if(isset($actors))
+	@if(isset($persons))
 
-		@include('templates.actor-list', array('actors' => $actors, 'paginate' => false))
+		@include('templates.person-list', array('persons' => $persons, 'paginate' => false))
 
 	@endif
 

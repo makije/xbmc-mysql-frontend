@@ -48,6 +48,11 @@ class Movie extends Eloquent {
 
 	public function actors()
 	{
-		return $this->belongsToMany('Actor', 'actorlinkmovie', 'idMovie', 'idActor')->withPivot('strRole', 'iOrder')->orderBy('pivot_iOrder');
+		return $this->belongsToMany('Person', 'actorlinkmovie', 'idMovie', 'idActor')->withPivot('strRole', 'iOrder')->orderBy('pivot_iOrder');
+	}
+
+	public function directors()
+	{
+		return $this->belongsToMany('Person', 'directorlinkmovie', 'idMovie', 'idDirector');
 	}
 }

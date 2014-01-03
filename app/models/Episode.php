@@ -38,4 +38,14 @@ class Episode extends Eloquent {
 		return $this->belongsTo('TVShow', 'idShow', 'idShow');
 	}
 
+	public function actors()
+	{
+		return $this->belongsToMany('Person', 'actorlinkepisode', 'idEpisode', 'idActor')->withPivot('strRole' ,'iOrder')->orderBy('pivot_iOrder');;
+	}
+
+	public function directors()
+	{
+		return $this->belongsToMany('Person', 'directorlinkepisode', 'idEpisode', 'idDirector')->orderBy('strActor');
+	}
+
 }
