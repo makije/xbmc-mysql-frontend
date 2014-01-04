@@ -69,4 +69,23 @@
                 </div>
         {{ Form::close() }}
 
+	<h1>My wishes</h1>
+
+	<table>
+		<tr>
+			<th>Title</th><th>Type</th><th>Granted</th><th>Edit</th>
+		</tr>
+		@foreach($user->wishes()->orderBy('title')->get() as $wish)
+			<tr>
+				<td><a href="/wish/{{$wish->id}}">{{$wish->title}}</a></td>
+				<td>{{ucwords($wish->type)}}</td>
+				<td>
+					@if($wish->granted_url)
+						<a href="{{$wish->granted_url}}">Here</a>
+					@endif
+				</td>
+				<td><a href="/wish/{{$wish->id}}/edit">Edit</a></td>
+			</tr>
+		@endforeach
+	</table>
 @stop
