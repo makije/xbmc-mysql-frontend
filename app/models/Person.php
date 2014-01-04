@@ -30,21 +30,21 @@ class Person extends Eloquent {
 
 	public function moviesActed()
 	{
-		return $this->belongsToMany('Movie', 'actorlinkmovie', 'idActor', 'idMovie')->orderBy('c16');
+		return $this->belongsToMany('Movie', 'actorlinkmovie', 'idActor', 'idMovie')->orderBy('c07');
 	}
 
 	public function tvshowsActed()
 	{
-		return $this->belongsToMany('TVShow', 'actorlinktvshow', 'idActor', 'idShow')->orderBy('c00');
+		return $this->belongsToMany('TVShow', 'actorlinktvshow', 'idActor', 'idShow')->orderBy('c05');
 	}
 
 	public function moviesDirected()
 	{
-		return $this->belongsToMany('Movie', 'directorlinkmovie', 'idDirector', 'idMovie')->orderBy('c16');
+		return $this->belongsToMany('Movie', 'directorlinkmovie', 'idDirector', 'idMovie')->orderBy('c07');
 	}
 
 	public function episodesDirected()
 	{
-		return $this->belongsToMany('Episode', 'directorlinkepisode', 'idDirector', 'idEpisode')->orderBy('c00');
+		return $this->belongsToMany('Episode', 'directorlinkepisode', 'idDirector', 'idEpisode')->orderBy('c05');
 	}
 }
