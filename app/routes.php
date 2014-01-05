@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -38,7 +40,11 @@ Route::post('login', array('before' => 'secure', function() {
 	);
 
 	if ( Auth::attempt($userdata) )
+	{
+		Auth::user()->last_login = Carbon::now();
+		Auth::user()->save();
 		return Redirect::to('/');
+	}
 	else
 		return Redirect::to('login')->with('login_errors', true);
 }));
