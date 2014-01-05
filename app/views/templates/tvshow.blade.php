@@ -65,7 +65,7 @@
 					if($season != $episode->c12)
 					{
 						$season = $episode->c12;
-						echo 'Season ' . $season . '</br>';
+						echo $season == 0 ? 'Specials<br/>' : 'Season ' . $season . '</br>';
 					}
 				?>
 				<a href="/episode/{{$episode->idEpisode}}">{{$episode->c13}} {{$episode->c00}}</a></br>
