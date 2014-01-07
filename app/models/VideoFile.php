@@ -6,4 +6,9 @@ class VideoFile extends Eloquent {
 	protected $table = 'files';
 	protected $primaryKey = 'idFile';
 
+	public function getDates()
+	{
+		return array('lastPlayed', 'dateAdded');
+	}
+
 }
