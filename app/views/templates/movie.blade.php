@@ -65,6 +65,18 @@
 			</td>
 		</tr>
 	@endif
+	@if($movie->file->playCount)
+		<tr>
+			<td>Play count</td>
+			<td>{{ $movie->file->playCount }}</td>
+		</tr>
+	@endif
+	@if($movie->file->lastPlayed)
+		<tr>
+			<td>Last watched</td>
+			<td>{{ $movie->file->lastPlayed->toDayDateTimeString() }}</td>
+		</tr>
+	@endif
 	<tr>
 		<td>Rating</td>
 		<td>{{round($movie->c05, 1)}} ({{$movie->c04}} votes)</td>
@@ -109,5 +121,9 @@
 				</a>
 			@endif
 		</td>
+	</tr>
+	<tr>
+		<td>Added</td>
+		<td>{{ $movie->file->dateAdded->toDayDateTimeString() }}</td>
 	</tr>
 </table>
