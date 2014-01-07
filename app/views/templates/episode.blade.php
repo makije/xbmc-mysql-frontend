@@ -39,6 +39,18 @@
 			</td>
 		</tr>
 	@endif
+	@if($episode->file->playCount)
+		<tr>
+			<td>Play count</td>
+			<td>{{ $episode->file->playCount }}</td>
+		</tr>
+	@endif
+	@if($episode->file->lastPlayed)
+		<tr>
+			<td>Last watched</td>
+			<td>{{ $episode->file->lastPlayed->toDayDateTimeString() }}</td>
+		</tr>
+	@endif
 	<tr>
 		<td>Path</td>
 		<td>
@@ -52,5 +64,9 @@
 				</a>
 			@endif
 		</td>
+	</tr>
+	<tr>
+		<td>Added</td>
+		<td>{{ $episode->file->dateAdded->toDayDateTimeString() }}</td>
 	</tr>
 </table>

@@ -33,6 +33,11 @@ class Episode extends Eloquent {
 		return str_replace(Config::get('app.srcPath'), Config::get('app.dstPath'), $this->c18);
 	}
 
+	public function file()
+	{
+		return $this->hasOne('VideoFile', 'idFile', 'idFile');
+	}
+
 	public function tvshow()
 	{
 		return $this->belongsTo('TVShow', 'idShow', 'idShow');
