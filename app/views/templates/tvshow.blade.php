@@ -41,10 +41,6 @@
 		</tr>
 	@endif
 	<tr>
-		<td>Network</td>
-		<td>{{ $show->c14 }}</td>
-	</tr>
-	<tr>
 		<td>Genre(s)</td>
 		<td>{{ $show->c08 }}</td>
 	</tr>
