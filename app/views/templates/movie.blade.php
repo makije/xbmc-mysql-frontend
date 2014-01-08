@@ -81,6 +81,12 @@
 		<td>Rating</td>
 		<td>{{round($movie->c05, 1)}} ({{$movie->c04}} votes)</td>
 	</tr>
+	@if($movie->studio()->count() > 0)
+		<tr>
+			<td>Studio</td>
+			<td>{{ $movie->studio()->first()->getName() }}</td>
+		</tr>
+	@endif
 	<?php
 		$set = $movie->set()->first();
 	?>

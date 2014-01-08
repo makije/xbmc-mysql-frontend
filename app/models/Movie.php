@@ -60,4 +60,9 @@ class Movie extends Eloquent {
 	{
 		return $this->belongsToMany('Person', 'directorlinkmovie', 'idMovie', 'idDirector');
 	}
+
+	public function studio()
+	{
+		return $this->belongsToMany('Studio', 'studiolinkmovie', 'idMovie', 'idStudio');
+	}
 }

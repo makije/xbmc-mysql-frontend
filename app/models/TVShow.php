@@ -58,4 +58,8 @@ class TVShow extends Eloquent {
 		return $this->belongsToMany('Person', 'actorlinktvshow', 'idShow', 'idActor')->withPivot('strRole', 'iOrder')->orderBy('pivot_iOrder');
 	}
 
+	public function studio()
+	{
+		return $this->belongsToMany('Studio', 'studiolinktvshow', 'idShow', 'idStudio');
+	}
 }

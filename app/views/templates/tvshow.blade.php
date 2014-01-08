@@ -34,6 +34,12 @@
 		<td>Rating</td>
 		<td>{{round($show->c04, 1)}}</td>
 	</tr>
+	@if($show->studio()->count() > 0)
+		<tr>
+			<td>Studio</td>
+			<td>{{ $show->studio()->first()->getName() }}</td>
+		</tr>
+	@endif
 	<tr>
 		<td>Network</td>
 		<td>{{ $show->c14 }}</td>
