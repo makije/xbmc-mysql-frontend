@@ -39,6 +39,17 @@
 			</td>
 		</tr>
 	@endif
+	@if($episode->writers()->count() > 0)
+		<tr>
+			<td>Writer(s)</td>
+			<td>
+				@foreach($episode->writers as $writer)
+					<a href="/person/{{$writer->idActor}}">{{$writer->getName()}}</a>
+					<br/>
+				@endforeach
+			</td>
+		</tr>
+	@endif
 	@if($episode->file->playCount)
 		<tr>
 			<td>Play count</td>

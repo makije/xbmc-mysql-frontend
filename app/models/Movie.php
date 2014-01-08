@@ -58,7 +58,12 @@ class Movie extends Eloquent {
 
 	public function directors()
 	{
-		return $this->belongsToMany('Person', 'directorlinkmovie', 'idMovie', 'idDirector');
+		return $this->belongsToMany('Person', 'directorlinkmovie', 'idMovie', 'idDirector')->orderBy('strActor');
+	}
+
+	public function writers()
+	{
+		return $this->belongsToMany('Person', 'writerlinkmovie', 'idMovie', 'idWriter')->orderBy('strActor');
 	}
 
 	public function studio()

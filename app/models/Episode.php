@@ -53,4 +53,9 @@ class Episode extends Eloquent {
 		return $this->belongsToMany('Person', 'directorlinkepisode', 'idEpisode', 'idDirector')->orderBy('strActor');
 	}
 
+	public function writers()
+	{
+		return $this->belongsToMany('Person', 'writerlinkepisode', 'idEpisode', 'idWriter')->orderBy('strActor');
+	}
+
 }
