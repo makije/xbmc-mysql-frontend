@@ -27,3 +27,15 @@
 
 	@include('templates.episode-list', array('episodes' => $person->episodesDirected()->get(), 'paginate' => false))
 @endif
+
+@if($person->moviesWritten()->get()->count() > 0)
+	<h2>Movies written</h2>
+
+	@include('templates.movie-list', array('movies' => $person->moviesWritten()->get(), 'paginate' => false))
+@endif
+
+@if($person->episodesWritten()->get()->count() > 0)
+	<h2>Episodes written</h2>
+
+	@include('templates.episode-list', array('episodes' => $person->episodesWritten()->get(), 'paginate' => false))
+@endif

@@ -47,4 +47,14 @@ class Person extends Eloquent {
 	{
 		return $this->belongsToMany('Episode', 'directorlinkepisode', 'idDirector', 'idEpisode')->orderBy('c05');
 	}
+
+	public function moviesWritten()
+	{
+		return $this->belongsToMany('Movie', 'writerlinkmovie', 'idWriter', 'idMovie')->orderBy('c07');
+	}
+
+	public function episodesWritten()
+	{
+		return $this->belongsToMany('Episode', 'writerlinkepisode', 'idWriter', 'idEpisode')->orderBy('c05');
+	}
 }
