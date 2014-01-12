@@ -40,10 +40,21 @@
 			<td><a href="/studio/{{$show->studio()->first()->idStudio}}">{{ $show->studio()->first()->getName() }}</a></td>
 		</tr>
 	@endif
-	<tr>
-		<td>Genre(s)</td>
-		<td>{{ $show->c08 }}</td>
-	</tr>
+	<?php
+		$genres = $show->genres()->get();
+		$genreNo = 0;
+	?>
+	@if($genres->count() > 0)
+		<tr>
+			<td>Genre(s)</td>
+			<td>
+				@foreach($genres as $genre)
+					<?php $genreNo++ ?>
+					<a href="/genre/{{$genre->idGenre}}">{{$genre->getName()}}</a><?php echo ($genreNo < $genres->count() ? ' / ' : '') ?>
+				@endforeach
+			</td>
+		</tr>
+	@endif
 	<tr>
 		<td>Actors</td>
 		<td>
