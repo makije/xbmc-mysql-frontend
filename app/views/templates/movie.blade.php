@@ -47,10 +47,12 @@
 		<td>Plot</td>
 		<td>{{ $movie->c01 }}</td>
 	</tr>
-	<tr>
-		<td>Country</td>
-		<td>{{ $movie->c21 }}</td>
-	</tr>
+	@if($movie->country()->count() > 0)
+		<tr>
+			<td>Country</td>
+			<td><a href="/country/{{$movie->country()->first()->idCountry}}">{{ $movie->country()->first()->getName() }}</a></td>
+		</tr>
+	@endif
 	@if($movie->actors()->get()->count() > 0)
 		<tr>
 			<td>Actors</td>

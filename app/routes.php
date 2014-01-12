@@ -229,6 +229,8 @@ Route::resource('studio', 'StudioController');
 
 Route::resource('genre', 'GenreController');
 
+Route::resource('country', 'CountryController');
+
 if (Config::get('database.log', false))
 {
 	Event::listen('illuminate.query', function($query, $bindings, $time, $name)

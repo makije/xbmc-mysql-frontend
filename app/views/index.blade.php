@@ -8,6 +8,7 @@
 	{{ TVShow::all()->count() }} <a href="tvshow">tv shows</a> with {{ Episode::all()->count() }} episodes<br/>
 	{{ Artist::all()->count() }} <a href="artist">artists</a> with {{ Album::all()->count() }} <a href="album">albums</a> containing {{ Song::all()->count() }} songs<br/>
 	{{ Studio::all()->count() }} <a href="studio">studios</a><br/>
-	{{ Genre::all()->count() }} <a href="genre">genres</a>
+	{{ Genre::all()->count() }} <a href="genre">genres</a><br/>
+	{{ Country::all()->count() }} <a href="country"> countires</a>
 
 @stop

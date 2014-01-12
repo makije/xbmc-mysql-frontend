@@ -75,4 +75,9 @@ class Movie extends Eloquent {
 	{
 		return $this->belongsToMany('Genre', 'genrelinkmovie', 'idMovie', 'idGenre')->orderBy('strGenre');
 	}
+
+	public function country()
+	{
+		return $this->belongsToMany('Country', 'countrylinkmovie', 'idMovie', 'idCountry');
+	}
 }
