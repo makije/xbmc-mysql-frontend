@@ -50,7 +50,7 @@
                                                 </ul>
                                         </li>
 					<li class="has-dropdown">
-                                                <a href="{{URL::to('studio')}}">Studio</a>
+                                                <a href="{{URL::to('studio')}}">Studios</a>
                                                 <ul class="dropdown">
                                                         <li><a href="{{URL::to('studio')}}">List</a></li>
                                                 </ul>
