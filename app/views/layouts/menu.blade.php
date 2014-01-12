@@ -50,6 +50,12 @@
                                                 </ul>
                                         </li>
 					<li class="has-dropdown">
+                                                <a href="{{URL::to('studio')}}">Studio</a>
+                                                <ul class="dropdown">
+                                                        <li><a href="{{URL::to('studio')}}">List</a></li>
+                                                </ul>
+                                        </li>
+					<li class="has-dropdown">
 						<a href="{{URL::to('tvshow')}}">TV Shows</a>
 						<ul class="dropdown">
 							<li><a href="{{URL::to('episode/latest')}}">Latest</a></li>

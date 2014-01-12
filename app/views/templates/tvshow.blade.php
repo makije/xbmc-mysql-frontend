@@ -37,7 +37,7 @@
 	@if($show->studio()->count() > 0)
 		<tr>
 			<td>Studio</td>
-			<td>{{ $show->studio()->first()->getName() }}</td>
+			<td><a href="/studio/{{$show->studio()->first()->idStudio}}">{{ $show->studio()->first()->getName() }}</a></td>
 		</tr>
 	@endif
 	<tr>

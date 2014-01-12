@@ -95,7 +95,7 @@
 	@if($movie->studio()->count() > 0)
 		<tr>
 			<td>Studio</td>
-			<td>{{ $movie->studio()->first()->getName() }}</td>
+			<td><a href="/studio/{{$movie->studio()->first()->idStudio}}">{{ $movie->studio()->first()->getName() }}</a></td>
 		</tr>
 	@endif
 	<?php

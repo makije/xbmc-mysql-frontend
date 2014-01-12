@@ -225,6 +225,8 @@ Route::get('person/search', array('before' => 'auth', function()
 
 Route::resource('person', 'PersonController');
 
+Route::resource('studio', 'StudioController');
+
 if (Config::get('database.log', false))
 {
 	Event::listen('illuminate.query', function($query, $bindings, $time, $name)
