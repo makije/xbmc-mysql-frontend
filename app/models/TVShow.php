@@ -62,4 +62,9 @@ class TVShow extends Eloquent {
 	{
 		return $this->belongsToMany('Studio', 'studiolinktvshow', 'idShow', 'idStudio');
 	}
+
+	public function genres()
+	{
+		return $this->belongsToMany('Genre', 'genrelinktvshow', 'idShow', 'idGenre')->orderBy('strGenre');
+	}
 }

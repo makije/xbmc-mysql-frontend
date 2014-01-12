@@ -28,10 +28,21 @@
 			{{$movie->c12}}
 		</td>
 	</tr>
-	<tr>
-		<td>Genre(s)</td>
-		<td>{{$movie->c14}}</td>
-	</tr>
+	<?php
+		$genres = $movie->genres()->get();
+		$genreNo = 0;
+	?>
+	@if($genres->count() > 0)
+		<tr>
+			<td>Genre(s)</td>
+			<td>
+				@foreach($genres as $genre)
+					<?php $genreNo++ ?>
+					<a href="/genre/{{$genre->idGenre}}">{{$genre->getName()}}</a><?php echo ($genreNo < $genres->count() ? ' / ' : '') ?>
+				@endforeach
+			</td>
+		</tr>
+	@endif
 	<tr>
 		<td>Plot</td>
 		<td>{{ $movie->c01 }}</td>

@@ -70,4 +70,9 @@ class Movie extends Eloquent {
 	{
 		return $this->belongsToMany('Studio', 'studiolinkmovie', 'idMovie', 'idStudio');
 	}
+
+	public function genres()
+	{
+		return $this->belongsToMany('Genre', 'genrelinkmovie', 'idMovie', 'idGenre')->orderBy('strGenre');
+	}
 }

@@ -227,6 +227,8 @@ Route::resource('person', 'PersonController');
 
 Route::resource('studio', 'StudioController');
 
+Route::resource('genre', 'GenreController');
+
 if (Config::get('database.log', false))
 {
 	Event::listen('illuminate.query', function($query, $bindings, $time, $name)
