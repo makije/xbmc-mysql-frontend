@@ -34,15 +34,18 @@
 			@if(Auth::check())
 				<ul class="left">
 					<li class="has-dropdown">
-						<a href="{{URL::to('country')}}">Countries</a>
+						<a href="#">Details</a>
 						<ul class="dropdown">
-							<li><a href="{{URL::to('country')}}">List</a></li>
-						</ul>
-					</li>
-					<li class="has-dropdown">
-						<a href="{{URL::to('genre')}}">Genres</a>
-						<ul class="dropdown">
-							<li><a href="{{URL::to('genre')}}">List</a></li>
+							<li class="has-dropdown">
+                	                	                <a href="{{URL::to('person')}}">Persons</a>
+		                                                <ul class="dropdown">
+                                                		        <li><a href="{{URL::to('person')}}">List</a></li>
+                                		                        <li><a href="{{URL::to('person/search')}}">Search</a></li>
+                		                                </ul>
+		                                        </li>
+							<li><a href="{{URL::to('country')}}">Countries</a></li>
+							<li><a href="{{URL::to('genre')}}">Genres</a></li>
+							<li><a href="{{URL::to('studio')}}">Studios</a></li>
 						</ul>
 					</li>
 					<li class="has-dropdown">
@@ -62,19 +65,6 @@
 							<li><a href="{{URL::to('music/search')}}">Search</a></li>
 						</ul>
 					</li>
-					<li class="has-dropdown">
-                                                <a href="{{URL::to('person')}}">Persons</a>
-                                                <ul class="dropdown">
-                                                        <li><a href="{{URL::to('person')}}">List</a></li>
-                                                        <li><a href="{{URL::to('person/search')}}">Search</a></li>
-                                                </ul>
-                                        </li>
-					<li class="has-dropdown">
-                                                <a href="{{URL::to('studio')}}">Studios</a>
-                                                <ul class="dropdown">
-                                                        <li><a href="{{URL::to('studio')}}">List</a></li>
-                                                </ul>
-                                        </li>
 					<li class="has-dropdown">
 						<a href="{{URL::to('tvshow')}}">TV Shows</a>
 						<ul class="dropdown">
