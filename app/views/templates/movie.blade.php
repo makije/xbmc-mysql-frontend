@@ -1,22 +1,22 @@
-@if($movie->getPosters())
-	<?php
-		$number = 0;
-	?>
+@if($movie->poster() || $movie->fanart())
 	<div style="width: 500px;">
 		<ul class="example-orbit" data-orbit data-options="timer_speed: 3000; pause_on_hover: false;">
-			@foreach($movie->getPosters() as $poster)
+			@if($movie->poster() !== false)
 				<li>
-					<img src="{{$poster}}"/>
+					<img src="{{$movie->poster()}}"/>
+					<div class="orbit-caption">
+						Poster
+					</div>
 				</li>
-
-				<?php
-					$number++;
-
-					if($number >= Config::get('app.maxImages'))
-						break;
-				?>
-
-			@endforeach
+			@endif
+			@if($movie->fanart())
+				<li>
+					<img src="{{$movie->fanart()}}"/>
+					<div class="orbit-caption">
+						Fanart
+					</div>
+				</li>
+			@endif
 		</ul>
 	</div>
 @endif
