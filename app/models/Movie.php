@@ -80,4 +80,32 @@ class Movie extends Eloquent {
 	{
 		return $this->belongsToMany('Country', 'countrylinkmovie', 'idMovie', 'idCountry');
 	}
+
+	public function getPoster()
+	{
+		return $this->beLongsTo('Art', 'idMovie', 'media_id')->movie()->poster();
+	}
+
+	public function poster()
+	{
+		$poster = $this->getPoster();
+		if($poster->count() > 0)
+			return $poster->first()->url;
+		else
+			return null;
+	}
+
+	public function getFanart()
+	{
+		return $this->beLongsTo('Art', 'idMovie', 'media_id')->movie()->fanart();
+	}
+
+	public function fanart()
+	{
+		$fanart = $this->getFanart();
+		if($fanart->count() > 0)
+			return $fanart->first()->url;
+		else
+			return null;
+	}
 }
