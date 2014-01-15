@@ -5,7 +5,7 @@
 	</tr>
 	<tr>
 		<td>Type</td>
-		<td>{{ ucwords($wish->type) }}</td>
+		<td>{{ trans('types.' . $wish->type) }}</td>
 	</tr>
 	@if($wish->url)
 		<tr>
@@ -19,4 +19,8 @@
 			<td><a href="{{ $wish->granted_url }}">Here</a></td>
 		</tr>
 	@endif
+	<tr>
+		<td>Last updated</td>
+		<td>{{ $wish->updated_at }}</td>
+	</tr>
 </table>

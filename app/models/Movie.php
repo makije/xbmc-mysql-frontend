@@ -41,6 +41,21 @@ class Movie extends Eloquent {
 		return $this->beLongsTo('StreamDetail', 'idFile', 'idFile')->orderBy('iStreamType');
 	}
 
+	public function video()
+	{
+		return $this->beLongsTo('StreamDetail', 'idFile', 'idFile')->video();
+	}
+
+	public function audio()
+	{
+		return $this->beLongsTo('StreamDetail', 'idFile', 'idFile')->audio();
+	}
+
+	public function subtitles()
+	{
+		return $this->beLongsTo('StreamDetail', 'idFile', 'idFile')->subtitle();
+	}
+
 	public function file()
 	{
 		return $this->hasOne('VideoFile', 'idFile', 'idFile');

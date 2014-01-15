@@ -6,25 +6,6 @@ class TVShow extends Eloquent {
 	protected $table = 'tvshow';
 	protected $primaryKey = 'idShow';
 
-	public function getBanners() {
-
-		if(strlen($this->c06) == 0)
-			return null;
-
-		$dom = new DOMDocument();
-		@$dom->loadHTML($this->c06);
-
-		$banners = array();
-
-		foreach($dom->getElementsByTagName('thumb') as $thumb)
-		{
-			if($thumb->getAttribute('aspect') == 'banner')
-				array_push($banners, $thumb->nodeValue);
-		}
-
-		return $banners;
-	}
-
 	public function getName() {
 		return $this->c00;
 	}
@@ -66,5 +47,47 @@ class TVShow extends Eloquent {
 	public function genres()
 	{
 		return $this->belongsToMany('Genre', 'genrelinktvshow', 'idShow', 'idGenre')->orderBy('strGenre');
+	}
+
+	public function getBanner()
+	{
+		return $this->beLongsTo('Art', 'idShow', 'media_id')->tvshow()->banner();
+	}
+
+	public function banner()
+	{
+		$banner = $this->getBanner();
+		if($banner->count() > 0)
+			return $banner->first()->url;
+		else
+			return null;
+	}
+
+	public function getFanart()
+	{
+		return $this->beLongsTo('Art', 'idShow', 'media_id')->tvshow()->fanart();
+	}
+
+	public function fanart()
+	{
+		$fanart = $this->getFanart();
+		if($fanart->count() > 0)
+			return $fanart->first()->url;
+		else
+			return null;
+	}
+
+	public function getPoster()
+	{
+		return $this->beLongsTo('Art', 'idShow', 'media_id')->tvshow()->poster();
+	}
+
+	public function poster()
+	{
+		$poster = $this->getPoster();
+		if($poster->count() > 0)
+			return $poster->first()->url;
+		else
+			return null;
 	}
 }

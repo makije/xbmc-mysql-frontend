@@ -14,6 +14,32 @@
 		<td>Plot</td>
 		<td>{{ $episode->c01 }}</td>
 	</tr>
+	<tr>
+		<td>Video</td>
+		<td>
+			@foreach($episode->video()->get() as $streamDetail)
+				{{ trans('formats.' . $streamDetail->strVideoCodec) }} {{$streamDetail->iVideoWidth}}x{{$streamDetail->iVideoHeight}} {{gmdate('H:i:s', $streamDetail->iVideoDuration)}}<br/>
+			@endforeach
+		</td>
+	</tr>
+	<tr>
+		<td>Audio</td>
+		<td>
+			@foreach($episode->audio()->get() as $streamDetail)
+				@if($streamDetail->strAudioLanguage && strlen($streamDetail->strAudioLanguage) > 0) {{ trans('language.' . $streamDetail->strAudioLanguage) }} / @endif {{ trans('formats.' . $streamDetail->strAudioCodec) }} / {{$streamDetail->iAudioChannels}} Channels<br/>
+			@endforeach
+		</td>
+	</tr>
+	<tr>
+		<td>Subtitles</td>
+		<td>
+			@foreach($episode->subtitles()->get() as $streamDetail)
+				@if($streamDetail->strSubtitleLanguage)
+					{{ trans('language.' . $streamDetail->strSubtitleLanguage) }}<br/>
+				@endif
+			@endforeach
+		</td>
+	</tr>
 	@if($episode->actors()->get()->count() > 0)
 		<tr>
 			<td>Actors</td>

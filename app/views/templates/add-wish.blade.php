@@ -16,7 +16,7 @@
 					<span class="prefix">Type</span>
 				</div>
 				<div class="small-7 large-9 columns">
-					{{ Form::select('type', array('movie' => 'Movie', 'tvshow' => 'TV Show', 'album' => 'Album', 'song' => 'Song'), isset($wish) ? $wish->type : 'movie') }}
+					{{ Form::select('type', array('movie' => trans('types.movie'), 'tvshow' => trans('types.tvshow'), 'album' => 'Album', 'song' => 'Song'), isset($wish) ? $wish->type : 'movie') }}
 				</div>
 				<div class="small-5 large-3 columns">
 					<span class="prefix">URL</span>

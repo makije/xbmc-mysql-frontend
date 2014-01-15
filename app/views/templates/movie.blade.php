@@ -1,24 +1,15 @@
 @if($movie->poster() || $movie->fanart())
-	<div style="width: 500px;">
-		<ul class="example-orbit" data-orbit data-options="timer_speed: 3000; pause_on_hover: false;">
-			@if($movie->poster() !== false)
-				<li>
-					<img src="{{$movie->poster()}}"/>
-					<div class="orbit-caption">
-						Poster
-					</div>
-				</li>
+	<div style="width: 440px;">
+		<ul class="clearing-thumbs" data-clearing>
+			@if($movie->poster())
+				<li><a class="th" href="{{$movie->poster()}}"><img width="200px" data-caption="Poster" src="{{$movie->poster()}}"></a></li>
 			@endif
 			@if($movie->fanart())
-				<li>
-					<img src="{{$movie->fanart()}}"/>
-					<div class="orbit-caption">
-						Fanart
-					</div>
-				</li>
+				<li><a class="th" href="{{$movie->fanart()}}"><img width="200px" data-caption="Fanart" src="{{$movie->fanart()}}"></a></li>
 			@endif
 		</ul>
 	</div>
+	<br/><br/>
 @endif
 <table>
 	<tr>
@@ -120,24 +111,32 @@
 			<td><a href="/movieset/{{$set->idSet}}">{{$set->getName()}}</a></td>
 		</tr>
 	@endif
-	@if($movie->streamDetails()->get()->count() > 0)
-		<tr>
-			<td>Stream Details</td>
-			<td>
-				@foreach($movie->streamDetails()->get() as $streamDetail)
-					@if($streamDetail->iStreamType == 0)
-						Video: {{$streamDetail->strVideoCodec}} {{$streamDetail->iVideoWidth}}x{{$streamDetail->iVideoHeight}} {{gmdate('H:i:s', $streamDetail->iVideoDuration)}}<br/>
-					@endif
-					@if($streamDetail->iStreamType == 1)
-						Audio: {{$streamDetail->strAudioCodec}} {{$streamDetail->iAudioChannels}} {{$streamDetail->strAudioLanguage}}<br/>
-					@endif
-					@if($streamDetail->iStreamType == 2)
-						Subtitle: {{$streamDetail->strSubtitleLanguage}}<br/>
-					@endif
-				@endforeach
-			</td>
-		</tr>
-	@endif
+	<tr>
+		<td>Video</td>
+		<td>
+			@foreach($movie->video()->get() as $streamDetail)
+				{{ trans('formats.' . $streamDetail->strVideoCodec) }} {{$streamDetail->iVideoWidth}}x{{$streamDetail->iVideoHeight}} {{gmdate('H:i:s', $streamDetail->iVideoDuration)}}<br/>
+			@endforeach
+		</td>
+	</tr>
+	<tr>
+		<td>Audio</td>
+		<td>
+			@foreach($movie->audio()->get() as $streamDetail)
+				@if($streamDetail->strAudioLanguage && strlen($streamDetail->strAudioLanguage) > 0) {{ trans('language.' . $streamDetail->strAudioLanguage) }} / @endif {{ trans('formats.' . $streamDetail->strAudioCodec) }} / {{$streamDetail->iAudioChannels}} Channels<br/>
+			@endforeach
+		</td>
+	</tr>
+	<tr>
+		<td>Subtitles</td>
+		<td>
+			@foreach($movie->subtitles()->get() as $streamDetail)
+				@if($streamDetail->strSubtitleLanguage)
+					{{ trans('language.' . $streamDetail->strSubtitleLanguage) }}<br/>
+				@endif
+			@endforeach
+		</td>
+	</tr>
 	<tr>
 		<td>Path</td>
 		<td>

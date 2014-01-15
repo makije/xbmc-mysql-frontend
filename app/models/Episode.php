@@ -58,4 +58,18 @@ class Episode extends Eloquent {
 		return $this->belongsToMany('Person', 'writerlinkepisode', 'idEpisode', 'idWriter')->orderBy('strActor');
 	}
 
+	public function video()
+	{
+		return $this->beLongsTo('StreamDetail', 'idFile', 'idFile')->video();
+	}
+
+	public function audio()
+	{
+		return $this->beLongsTo('StreamDetail', 'idFile', 'idFile')->audio();
+	}
+
+	public function subtitles()
+	{
+		return $this->beLongsTo('StreamDetail', 'idFile', 'idFile')->subtitle();
+	}
 }

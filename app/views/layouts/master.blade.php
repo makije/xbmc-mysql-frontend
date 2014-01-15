@@ -23,6 +23,7 @@
 		{{HTML::script('assets/js/foundation/foundation.alert.js')}}
 		{{HTML::script('assets/js/foundation/foundation.reveal.js')}}
 		{{HTML::script('assets/js/foundation/foundation.orbit.js')}}
+		{{HTML::script('assets/js/foundation/foundation.clearing.js')}}
 		<script>
                         $(document).foundation();
                 </script>

@@ -1,26 +1,19 @@
-@if($show->getBanners())
-	<?php
-		$number = 0;
-	?>
-	<div style="width: 758px;">
-	<ul class="example-orbit" data-orbit data-options="timer_speed: 3000; pause_on_hover: false;">
-		@foreach($show->getBanners() as $banner)
-			<li>
-				<img src="{{$banner}}"/>
-			</li>
-
-			<?php
-				$number++;
-
-				if($number >= Config::get('app.maxImages'))
-					break;
-			?>
-
-		@endforeach
-	</ul>
+@if($show->banner() || $show->fanart() || $show->poster())
+	<div style="width: 660px;">
+		<ul class="clearing-thumbs" data-clearing>
+			@if($show->banner())
+				<li><a class="th" href="{{$show->banner()}}"><img width="200px" data-caption="Banner" src="{{$show->banner()}}"></a></li>
+			@endif
+			@if($show->fanart())
+				<li><a class="th" href="{{$show->fanart()}}"><img width="200px" data-caption="Fanart" src="{{$show->fanart()}}"></a></li>
+			@endif
+			@if($show->poster())
+				<li><a class="th" href="{{$show->poster()}}"><img width="200px" data-caption="Poster" src="{{$show->poster()}}"></a></li>
+			@endif
+		</ul>
 	</div>
+	<br/><br/>
 @endif
-<br/><br/>
 <table>
 	<tr>
 		<td>Name</td>
