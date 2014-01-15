@@ -11,6 +11,11 @@ class Art extends Eloquent {
 		return $query->where('media_type', '=', 'movie');
 	}
 
+	public function scopeTvshow($query)
+	{
+		return $query->where('media_type', '=', 'tvshow');
+	}
+
 	public function scopePoster($query)
 	{
 		return $query->where('type', '=', 'poster');
@@ -25,4 +30,15 @@ class Art extends Eloquent {
 	{
 		return $query->where('type', '=', 'thumb');
 	}
+
+	public function scopeBanner($query)
+	{
+		return $query->where('type', '=', 'banner');
+	}
+
+	public function scopeClearlogo($query)
+	{
+		return $query->where('type', '=', 'clearlogo');
+	}
+
 }
