@@ -16,6 +16,11 @@ class Art extends Eloquent {
 		return $query->where('media_type', '=', 'tvshow');
 	}
 
+	public function scopeActor($query)
+	{
+		return $query->where('media_type', '=', 'actor');
+	}
+
 	public function scopePoster($query)
 	{
 		return $query->where('type', '=', 'poster');
