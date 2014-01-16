@@ -1,19 +1,19 @@
 <h1>{{ $person->getName() }}</h1>
 
-@if($person->getPicture())
-	<img src="{{$person->getPicture()}}" width="100px"/>
+@if($person->thumb())
+	<img src="{{$person->thumb()}}" width="100px"/>
 @endif
 
 @if($person->moviesActed()->get()->count() > 0)
 	<h2>Movie(s)</h2>
 
-	@include('templates.movie-list', array('movies' => $person->moviesActed()->get(), 'paginate' => false))
+	@include('templates.movie-list', array('movies' => $person->moviesActed()->get(), 'paginate' => false, 'as' => true))
 @endif
 
 @if($person->tvshowsActed()->get()->count() > 0)
 	<h2>TV Show(s)</h2>
 
-	@include('templates.tvshow-list', array('shows' => $person->tvshowsActed()->get(), 'paginate' => false))
+	@include('templates.tvshow-list', array('shows' => $person->tvshowsActed()->get(), 'paginate' => false, 'as' => false))
 @endif
 
 @if($person->moviesDirected()->get()->count() > 0)

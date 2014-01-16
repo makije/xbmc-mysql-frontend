@@ -6,36 +6,31 @@ class Person extends Eloquent {
 	protected $table = 'actors';
 	protected $primaryKey = 'idActor';
 
-	public function getPicture() {
-
-		if(strlen($this->strThumb) == 0)
-			return null;
-
-		$dom = new DOMDocument();
-		@$dom->loadHTML($this->strThumb);
-
-		$pictures = array();
-
-		foreach($dom->getElementsByTagName('thumb') as $thumb)
-		{
-			array_push($pictures, $thumb->nodeValue);
-		}
-
-		return $pictures[0];
-	}
-
 	public function getName() {
 		return $this->strActor;
 	}
 
+	public function getThumb()
+	{
+		return $this->beLongsTo('Art', 'idActor', 'media_id')->actor()->thumb();
+	}
+
+	public function thumb()
+	{
+		if($this->getThumb()->count() > 0)
+			return $this->getThumb()->first()->url;
+		else
+			return null;
+	}
+
 	public function moviesActed()
 	{
-		return $this->belongsToMany('Movie', 'actorlinkmovie', 'idActor', 'idMovie')->orderBy('c07');
+		return $this->belongsToMany('Movie', 'actorlinkmovie', 'idActor', 'idMovie')->withPivot('strRole')->orderBy('c07');
 	}
 
 	public function tvshowsActed()
 	{
-		return $this->belongsToMany('TVShow', 'actorlinktvshow', 'idActor', 'idShow')->orderBy('c05');
+		return $this->belongsToMany('TVShow', 'actorlinktvshow', 'idActor', 'idShow')->withPivot('strRole')->orderBy('c05');
 	}
 
 	public function moviesDirected()
