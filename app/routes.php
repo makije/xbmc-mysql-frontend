@@ -40,7 +40,7 @@ Route::post('login', array('before' => 'secure', function() {
 		'password' => Input::get('password')
 	);
 
-	if ( Auth::attempt($userdata) )
+	if ( Auth::attempt($userdata, Input::has('remember-me')) )
 	{
 		Auth::user()->last_login = Carbon::now();
 		Auth::user()->save();
