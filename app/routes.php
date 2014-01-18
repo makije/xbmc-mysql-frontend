@@ -44,7 +44,7 @@ Route::post('login', array('before' => 'secure', function() {
 	{
 		Auth::user()->last_login = Carbon::now();
 		Auth::user()->save();
-		return Redirect::to('/');
+		return Redirect::intended('/');
 	}
 	else
 		return Redirect::to('login')->with('login_errors', true);
