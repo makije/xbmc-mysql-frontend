@@ -42,6 +42,9 @@ Route::post('login', array('before' => 'secure', function() {
 
 	if ( Auth::attempt($userdata, Input::has('remember-me')) )
 	{
+		if (Hash::needsRehash(Hash::make(Input::get('password'))))
+			Auth::user()->password = Hash::make(Input::get('password'));
+
 		Auth::user()->last_login = Carbon::now();
 		Auth::user()->save();
 		return Redirect::intended('/');
