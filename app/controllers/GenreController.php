@@ -41,7 +41,7 @@ class GenreController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$genre = Genre::find($id);
+		$genre = Genre::findOrFail($id);
 		return View::make('genre')->with('genre', $genre);
 	}
 

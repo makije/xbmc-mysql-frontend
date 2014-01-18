@@ -41,7 +41,7 @@ class CountryController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$country = Country::find($id);
+		$country = Country::findOrFail($id);
 		return View::make('country')->with('country', $country);
 	}
 

@@ -46,7 +46,7 @@ class ArtistController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$artist = Artist::find($id);
+		$artist = Artist::findOrFail($id);
 		return View::make('artist')->with('artist', $artist);
 	}
 

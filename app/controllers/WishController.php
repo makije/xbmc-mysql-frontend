@@ -57,7 +57,7 @@ class WishController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$wish = Wish::find($id);
+		$wish = Wish::findOrFail($id);
 		return View::make('wish')->with('wish', $wish);
 	}
 

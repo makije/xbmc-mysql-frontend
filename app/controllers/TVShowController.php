@@ -46,7 +46,7 @@ class TVShowController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$show = TVShow::find($id);
+		$show = TVShow::findOrFail($id);
 		return View::make('tvshow')->with('show', $show);
 	}
 

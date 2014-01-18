@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /*
 |--------------------------------------------------------------------------
@@ -142,7 +143,7 @@ Route::get('episode/latest', array('before' => 'auth', function()
 
 Route::get('episode/{id}', array('before' => 'auth', function($id)
 {
-	$episode = Episode::find($id);
+	$episode = Episode::findOrFail($id);
 	$episode->load('actors', 'directors', 'tvshow');
 	return View::make('episode')->with('episode', $episode);
 }));
@@ -192,7 +193,7 @@ Route::resource('album', 'AlbumController');
 
 Route::get('song/{id}', array('before' => 'auth', function($id)
 {
-	$song = Song::find($id);
+	$song = Song::findOrFail($id);
 	return View::make('song')->with('song', $song);
 }));
 
@@ -230,6 +231,11 @@ Route::resource('studio', 'StudioController');
 Route::resource('genre', 'GenreController');
 
 Route::resource('country', 'CountryController');
+
+App::error(function(ModelNotFoundException $e)
+{
+	return Response::view('not-found', array(), 404);
+});
 
 if (Config::get('database.log', false))
 {

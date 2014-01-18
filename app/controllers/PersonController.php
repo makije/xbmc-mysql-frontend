@@ -46,7 +46,7 @@ class PersonController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$person = Person::find($id);
+		$person = Person::findOrFail($id);
 		$person->load('moviesActed', 'tvshowsActed', 'moviesDirected', 'episodesDirected');
 		return View::make('person')->with('person', $person);
 	}

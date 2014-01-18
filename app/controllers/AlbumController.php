@@ -46,7 +46,7 @@ class AlbumController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$album = Album::find($id);
+		$album = Album::findOrFail($id);
 		return View::make('album')->with('album', $album);
 	}
 

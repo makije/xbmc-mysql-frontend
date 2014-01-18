@@ -41,7 +41,7 @@ class StudioController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$studio = Studio::find($id);
+		$studio = Studio::findOrFail($id);
 		return View::make('studio')->with('studio', $studio);
 	}
 

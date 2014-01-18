@@ -46,7 +46,7 @@ class MovieSetController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		$set = MovieSet::find($id);
+		$set = MovieSet::findOrFail($id);
 		return View::make('movieset')->with('set', $set);
 	}
 
