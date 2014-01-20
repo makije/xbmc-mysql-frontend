@@ -28,7 +28,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="large-4 large-offset-8 small-4 small-offset-4 columns">
+					<div class="large-4 large-offset-8 small-4 small-offset-8 columns">
 						{{ Form::checkbox('remember-me'); }} Remember me
 					</div>
 				</div>
