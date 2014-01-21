@@ -8,8 +8,12 @@
 		<td><a href="/tvshow/{{$episode->tvshow()->first()->idShow}}">{{ $episode->tvshow()->first()->getName() }}</a></td>
 	</tr>
 	<tr>
+		<td>Season</td>
+		<td>{{ $episode->c12 }}</td>
+	</tr>
+	<tr>
 		<td>Episode</td>
-		<td>{{ $episode->getName() }}</td>
+		<td>{{ $episode->c13 }} - {{ $episode->getName() }}</td>
 	<tr>
 		<td>Plot</td>
 		<td>{{ $episode->c01 }}</td>
