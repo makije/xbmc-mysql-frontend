@@ -75,16 +75,16 @@ Route::post('profile', array('before' => 'auth', function()
 		$message .= 'Items per page updated<br/>';
 	}
 
-	if(Hash::check(Input::get('password'), Auth::user()->password) && strlen(Input::get('new-password')) > 0 && Input::get('new-password') == Input::get('confirm')) {
-		Auth::user()->password = Hash::make(Input::get('new-password'));
-		Auth::user()->save();
-		$message .= 'Password updated<br/>';
-	}
-
 	if(!Hash::check(Input::get('password'), Auth::user()->password) && strlen(Input::get('password')) > 0)
 	{
 		$error = true;
 		$message .= 'Password incorrect<br/>';
+	}
+
+	if(Hash::check(Input::get('password'), Auth::user()->password) && strlen(Input::get('new-password')) > 0 && Input::get('new-password') == Input::get('confirm') && !$error) {
+		Auth::user()->password = Hash::make(Input::get('new-password'));
+		Auth::user()->save();
+		$message .= 'Password updated<br/>';
 	}
 
 	if(Input::get('new-password') != Input::get('confirm'))
