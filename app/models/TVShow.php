@@ -12,7 +12,7 @@ class TVShow extends Eloquent {
 
 	public function episodes()
 	{
-		return $this->hasMany('Episode', 'idShow', 'idShow');
+		return $this->hasMany('Episode', 'idShow', 'idShow')->orderBy(DB::raw('cast(c12 as decimal) asc, cast(c13 as decimal)'), 'asc');
 	}
 
 	public function getTTVDBID()
