@@ -10,7 +10,7 @@
                                                 <span class="prefix">TV Show</span>
                                         </div>
                                         <div class="small-7 large-9 columns">
-                                                {{ Form::text('tvshow', Input::get('tvshow'), array('placeholder' => 'Enter TV Show name')) }}
+                                                {{ Form::text('tvshow', Input::get('tvshow'), array('placeholder' => 'Enter TV Show name', 'id' => 'tvshow')) }}
                                         </div>
                                 </div>
 
@@ -30,4 +30,8 @@
 
 	@endif
 
+@stop
+
+@section('scripts')
+	<script>$(document).ready(function(){ $('#tvshow').focus(); });</script>
 @stop

@@ -11,7 +11,7 @@
 						<span class="prefix">Username</span>
 					</div>
 					<div class="small-7 large-9 columns">
-						{{ Form::text('username', '', array('placeholder' => 'Enter username')) }}
+						{{ Form::text('username', '', array('placeholder' => 'Enter username', 'id' => 'username')) }}
 					</div>
 				</div>
 				<div class="row collapse">
@@ -37,4 +37,8 @@
 
 	{{ Form::close() }}
 
+@stop
+
+@section('scripts')
+	<script>$(document).ready(function(){ $('#username').focus(); });</script>
 @stop

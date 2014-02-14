@@ -28,7 +28,7 @@
                                                 <span class="prefix">Current password</span>
                                         </div>
                                         <div class="small-7 large-9 columns">
-                                                {{ Form::password('password', array('placeholder' => 'Enter password')) }}
+                                                {{ Form::password('password', array('placeholder' => 'Enter password', 'id' => 'password')) }}
                                         </div>
                                 </div>
 
@@ -37,7 +37,7 @@
                                                 <span class="prefix">New password</span>
                                         </div>
                                         <div class="small-7 large-9 columns">
-                                                {{ Form::password('new-password', array('placeholder' => 'Please enter your new password')) }}
+                                                {{ Form::password('new-password', array('placeholder' => 'Please enter your new password', 'id' => 'new-password')) }}
                                         </div>
                                 </div>
 
@@ -46,7 +46,7 @@
                                                 <span class="prefix">Confirm</span>
                                         </div>
                                         <div class="small-7 large-9 columns">
-                                                {{ Form::password('confirm', array('placeholder' => 'Please confirm your new password')) }}
+                                                {{ Form::password('confirm', array('placeholder' => 'Please confirm your new password', 'id' => 'confirm')) }}
                                         </div>
                                 </div>
 
@@ -88,4 +88,8 @@
 			</tr>
 		@endforeach
 	</table>
+@stop
+
+@section('scripts')
+	<script>$(document).ready(function(){ $('#password').focus(); });</script>
 @stop
