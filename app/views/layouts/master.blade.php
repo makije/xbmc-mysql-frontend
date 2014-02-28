@@ -4,6 +4,7 @@
 		<title>{{Config::get('app.name')}}</title>
 		{{HTML::style('assets/css/normalize.css')}}
 		{{HTML::style('assets/css/foundation.css')}}
+		{{HTML::style('assets/css/style.css')}}
 		{{HTML::script('assets/js/modernizr.js')}}
 	</head>
 
@@ -13,9 +14,13 @@
 			@yield('menu')
 		</div>
 
-		<div style="position: absolute; right: 3em; left: 3em; top: 4em; buttom: 3em;" align="center">
-			@yield('content')
-		</div>
+		<section class="content">
+			<div class="row">
+				<div class="small-12 columns">
+					@yield('content')
+				</div>
+			</div>
+		</section>
 
 		{{HTML::script('assets/js/vendor/jquery.js')}}
 		{{HTML::script('assets/js/foundation/foundation.js')}}
