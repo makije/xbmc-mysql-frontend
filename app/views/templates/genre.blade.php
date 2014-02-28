@@ -2,7 +2,7 @@
 @if($genre->movies()->count() > 0)
 	<h1>Movies</h1>
 
-	@include('templates.movie-list', array('movies' => $genre->movies()->paginate(Auth::user()->item_per_page), 'paginate' => true))
+	@include('templates.movie-list', array('movies' => $genre->movies()->paginate(Auth::user()->items_per_page), 'paginate' => true))
 
 @endif
 

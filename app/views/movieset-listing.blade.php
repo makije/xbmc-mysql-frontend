@@ -2,23 +2,25 @@
 
 @section('content')
 
-		<table>
-			<thead>
-				<tr>
-					<th>Poster</th><th>Name</th><th>Number of movies</th>
-				</tr>
-			</thead>
+	<div class="row">
+		<?php $i = 1; ?>
+		@foreach($movieSets as $set)
+			<div class="medium-3 columns @if((count($movieSets) == $i) && (count($movieSets) % 4 != 0)) end @endif">
+				<div class="list-image">
+					<a href="/movieset/{{$set->idSet}}">
+						<img src="{{$set->poster()}}"/>
+						<div class="count">{{$set->movies->count()}}</div>
+					</a>
+				</div>
+				<p class="list-title"><a href="/movieset/{{$set->idSet}}" >{{ $set->getName() }}</a></p>
 
-			@foreach($movieSets as $set)
-				<tr>
-					<td><a href="/movieset/{{$set->idSet}}"><img width="100px" src="{{$set->poster()}}"/></a></td>
-					<td><a href="/movieset/{{$set->idSet}}" >{{ $set->getName() }}</a></td>
-					<td>{{$set->movies->count()}}</td>
-				</tr>
-			@endforeach
+				@if($i++ % 4 == 0)
+					</div><div class="row">
+				@endif
+			</div>
+		@endforeach
+	</div>
 
-		</table>
-
-		{{ $movieSets->links() }}
+	{{ $movieSets->links() }}
 
 @stop

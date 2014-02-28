@@ -24,6 +24,11 @@ class Album extends Eloquent {
 		return $previews;
 	}
 
+	public function artists()
+	{
+		return $this->belongsToMany('Artist', 'album_artist', 'idAlbum', 'idArtist');
+	}
+
 	public function songs()
 	{
 		return $this->hasMany('Song', 'idAlbum', 'idAlbum')->orderBy('idPath', 'asc', 'iTrack', 'asc');

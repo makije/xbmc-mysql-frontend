@@ -1,22 +1,20 @@
-<table>
-	<thead>
-		<tr>
-			<th>Show</th>
-			<th>Poster</th>
-			<th>Name</th>
-		</tr>
-	</thead>
-
+<div class="row">
+	<?php $i = 1; ?>
 	@foreach($episodes as $episode)
-		<tr>
-			<td><a href="/tvshow/{{$episode->tvshow->idShow}}">{{$episode->tvshow->getName()}}</a></td>
-			<td><a href="/episode/{{$episode->idEpisode}}" ><img width="100px" src="{{ $episode->getPreview() }}"/></a></td>
-			<td><a href="/episode/{{$episode->idEpisode}}" >{{ $episode->getName() }}</a></td>
-		</tr>
-	@endforeach
+		<div class="medium-3 columns @if((count($episodes) == $i) && (count($episodes) % 4 != 0)) end @endif">
+			<div class="list-image"><a href="/episode/{{$episode->idEpisode}}" ><img src="{{ $episode->getPreview() }}"/></a></div>
+			<p class="list-title">
+				<a href="/tvshow/{{$episode->tvshow->idShow}}">{{$episode->tvshow->getName()}}</a><br>
+				<a href="/episode/{{$episode->idEpisode}}" >{{ $episode->getName() }}</a>
+			</p>
+		</div>
 
-</table>
+		@if($i++ % 4 == 0)
+			</div><div class="row">
+		@endif
+	@endforeach
+</div>
 
 @if($paginate)
-	{{ $episodes->links() }}
+	{{ $shows->links() }}
 @endif

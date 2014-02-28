@@ -30,10 +30,26 @@ class Movie extends Eloquent {
 	}
 
 	public function getName() {
-		if(strcmp($this->c00, $this->c16) == 0)
-			return $this->c00 . ' (' . $this->c07 . ')';
-		else
-			return $this->c16 . ' (' . $this->c07 . ')<br/>(' . $this->c00 . ')';
+		return $this->c00;
+	}
+
+	public function getAlias()
+	{
+		return $this->c16;
+	}
+
+	public function hasAlias() {
+		return $this->getName() != $this->getAlias();
+	}
+
+	public function getYear()
+	{
+		return $this->c07;
+	}
+
+	public function getRating()
+	{
+		return $this->c12;
 	}
 
 	public function streamDetails()

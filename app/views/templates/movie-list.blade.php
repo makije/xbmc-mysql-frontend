@@ -1,19 +1,24 @@
-<table>
-	<thead>
-		<tr>
-			<th>Poster</th>
-			<th>Name</th>
-		</tr>
-	</thead>
-
+<div class="row">
+	<?php $i = 1; ?>
 	@foreach($movies as $movie)
-		<tr>
-			<td><a href="/movie/{{$movie->idMovie}}" ><img width="100px" src="{{ $movie->poster() }}"/></a></td>
-			<td><a href="/movie/{{$movie->idMovie}}" >{{ $movie->getName() }}</a> @if(isset($as)) as {{ $movie->pivot->strRole }} @endif</td>
-		</tr>
-	@endforeach
+		<div class="medium-3 columns @if((count($movies) == $i) && (count($movies) % 4 != 0)) end @endif">
+			<div class="list-image"><a href="/movie/{{$movie->idMovie}}"><img src="{{ $movie->poster() }}"/></a></div>
 
-</table>
+			@if(Config::get('app.aliasBeforeName') && $movie->hasAlias())
+				<p class="list-title"><a href="/movie/{{$movie->idMovie}}">{{ $movie->getAlias() }} ({{ $movie->getYear() }})<br>{{$movie->getName()}}</a></p>
+			@elseif($movie->hasAlias())
+				<p class="list-title"><a href="/movie/{{$movie->idMovie}}">{{ $movie->getName() }} ({{ $movie->getYear() }})<br>{{$movie->getAlias()}}</a></p>
+			@else
+				<p class="list-title"><a href="/movie/{{$movie->idMovie}}">{{ $movie->getName() }} ({{ $movie->getYear() }})</a></p>
+			@endif
+
+		</div>
+
+		@if($i++ % 4 == 0)
+			</div><div class="row">
+		@endif
+	@endforeach
+</div>
 
 @if($paginate)
 	{{ $movies->links() }}

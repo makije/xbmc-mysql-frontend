@@ -1,0 +1,14 @@
+.menu {margin-bottom:30px;}
+
+table {width:100%;}
+table th {vertical-align:top; text-align:left; line-height:1.125rem;}
+table td {vertical-align:top; line-height:1.125rem;}
+
+.clearing-thumbs li {margin-bottom:20px;}
+
+
+.list-image {position:relative; margin-bottom:10px;}
+.list-image .count {position:absolute; bottom:10px; right:10px; width:44px; line-height:44px; font-size:24px; font-weight:bold; text-align:center; border-radius:45px; background:#fff; opacity:0.6;}
+.list-image:hover .count {opacity:0.85;}
+
+.list-title {font-size:14px;}
