@@ -7,6 +7,7 @@ return array(
 	'dstPath' => array('path_to_replace_with'),
 	'maxImages' => '3',
 	'downloads' => false,
+	'aliasBeforeName' => true,
 
 	/*
 	|--------------------------------------------------------------------------
