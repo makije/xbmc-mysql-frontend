@@ -13,7 +13,8 @@
 
 App::before(function($request)
 {
-	//
+	if(!$request->secure() && Config::get('app.secure'))
+		return Redirect::secure($request->getRequestUri());
 });
 
 

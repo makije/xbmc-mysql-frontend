@@ -8,6 +8,7 @@ return array(
 	'maxImages' => '3',
 	'downloads' => false,
 	'aliasBeforeName' => true,
+	'secure' => true,
 
 	/*
 	|--------------------------------------------------------------------------

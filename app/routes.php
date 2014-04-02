@@ -14,27 +14,12 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 |
 */
 
-Route::filter('auth', function()
-{
-	if(!Request::secure())
-		return Redirect::secure(Request::getRequestUri());
-
-	if(!Auth::check())
-		return Redirect::to('login');
-});
-
-Route::filter('secure', function()
-{
-	if( !Request::secure())
-		return Redirect::secure(Request::getRequestUri());
-});
-
-Route::get('login', array('before' => 'secure', function()
+Route::get('login', function()
 {
 	return View::make('login');
-}));
+});
 
-Route::post('login', array('before' => 'secure', function() {
+Route::post('login', function() {
 	$userdata = array(
 		'username' => Input::get('username'),
 		'password' => Input::get('password')
@@ -51,7 +36,7 @@ Route::post('login', array('before' => 'secure', function() {
 	}
 	else
 		return Redirect::to('login')->with('login_errors', true);
-}));
+});
 
 Route::get('logout', array('before' => 'auth', function() {
 	Auth::logout();
