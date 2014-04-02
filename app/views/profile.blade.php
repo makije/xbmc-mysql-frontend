@@ -78,7 +78,7 @@
 		@foreach($user->wishes()->orderBy('title')->get() as $wish)
 			<tr>
 				<td><a href="/wish/{{$wish->id}}">{{$wish->title}}</a></td>
-				<td>{{ucwords($wish->type)}}</td>
+				<td>{{ trans('types.' . $wish->type) }}</td>
 				<td>
 					@if($wish->granted_url)
 						<a href="{{$wish->granted_url}}">Here</a>
