@@ -23,12 +23,12 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="large-3 large-offset-9 small-4 small-offset-8 columns">
+					<div class="large-3 large-offset-9 small-2 small-offset-10 columns">
 						{{ Form::submit('Login', array('class' => 'small button success')) }}
 					</div>
 				</div>
 				<div class="row">
-					<div class="large-4 large-offset-8 small-4 small-offset-8 columns">
+					<div class="large-4 large-offset-8 small-2 small-offset-10 columns">
 						{{ Form::checkbox('remember-me'); }} Remember me
 					</div>
 				</div>
