@@ -15,4 +15,5 @@ return array(
 	'mp3' => 'MP3',
 	'aac' => 'Advanced Audio Coding',
 	'vorbis' => 'Vorbis',
+	'truehd' => 'Dolby TrueHD',
 );
