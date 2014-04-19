@@ -87,7 +87,7 @@
 					<td>{{ $episode->file->playCount }}</td>
 				</tr>
 			@endif
-			@if($episode->file->lastPlayed)
+			@if($episode->file->lastPlayed && $episode->file->playCount && $episode->file->playCount > 0)
 				<tr>
 					<th>Last watched</th>
 					<td>{{ $episode->file->lastPlayed->toDayDateTimeString() }}</td>
